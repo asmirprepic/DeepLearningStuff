@@ -46,11 +46,11 @@ tf.reduce_mean(A),tf.reduce_sum(A)/tf.size(A).numpy() ## Produces the same resul
 
 ## Dot product
 y = tf.ones(3,dtype = tf.float32)
-x,y tf.tensordot(x,y,axes=1) ## Should retunr 3 since its the dot procut of [0,1,2] and [1,1,1]
+x,y =  tf.tensordot(x,y,axes=1) ## Should retunr 3 since its the dot procut of [0,1,2] and [1,1,1]
 
 
 ## Matrix vector operations
-A.shape, x,shape, tf.linalg.matvec(A,x) ## should be a 2 dimensional vector
+A.shape, x.shape, tf.linalg.matvec(A,x) ## should be a 2 dimensional vector
 
 
 ## Matrix matrix operations
@@ -67,7 +67,7 @@ tf.norm(u)
 tf.reduce_sum(tf.abs(u))
 
 
-tf
+
 
 
 

@@ -35,7 +35,7 @@ optimizer = tf.optimizers.SGD(learning_rate)
 def run_optimization():
   # Wrap
   with tf.GradientTape() as g:
-    pred = linear_rergession(X)
+    pred = linear_regression(X)
     loss = mean_square(pred,Y)
   
   # Compute gradients
@@ -48,10 +48,10 @@ for step in range(1,training_steps +1):
   # Run the optimization parameters
   run_optimization()
 
-  if step % display_step == 0:
+  if step % display_steps == 0:
     pred = linear_regression(X)
     loss = mean_square(pred,Y)
-    print(f"step: {i}, loss: {loss}, W: {W.numpy()}, b: {b.numpy()})
+    print(f"step: {step}, loss: {loss}, W: {W.numpy()}, b: {b.numpy()}")
 
 
     
