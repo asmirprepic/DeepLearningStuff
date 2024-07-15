@@ -1,5 +1,6 @@
 import tensorflow as tf
 import tensorflow_datasets as tfds
+from tensorflow.keras import layers, models
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -51,7 +52,7 @@ def load_and_prepare_data():
 ds_train, ds_test = load_and_prepare_data()
 
 
-from tensorflow.keras import layers, models
+
 
 def build_and_train_model(ds_train, ds_test):
     """
@@ -129,3 +130,26 @@ def plot_results(history):
 
 # Plot training results
 plot_results(history)
+
+def make_prediction(model, ds_test):
+    """
+    Make predictions on a batch of test data and visualize the results.
+    Args:
+        model: The trained model.
+        ds_test: The test dataset.
+    """
+    for features, labels in ds_test.take(1):
+        predictions = model.predict(features)
+        predicted_labels = tf.argmax(predictions, axis=1)
+
+        # Visualize the results
+        plt.figure(figsize=(10, 10))
+        for i in range(9):
+            plt.subplot(3, 3, i + 1)
+            plt.plot(features[i].numpy())
+            plt.title(f"True: {labels[i]}, Pred: {predicted_labels[i]}")
+            plt.axis('off')
+        plt.show()
+
+# Example usage
+make_prediction(model, ds_test)
