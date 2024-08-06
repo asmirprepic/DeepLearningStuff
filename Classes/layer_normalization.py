@@ -1,6 +1,9 @@
+import tensorflow as tf
+from tensorflow.keras import layers
+
 class LayerNormalization(layers.Layer):
-    def __init__(self,epsilon = 1e-6,**kwargs):
-        super(LayerNormalizationLayer,self).__init__(**kwargs):
+    def __init__(self, epsilon=1e-6, **kwargs):
+        super(LayerNormalization, self).__init__(**kwargs)
         self.epsilon = epsilon
 
     def build(self,input_shape):
