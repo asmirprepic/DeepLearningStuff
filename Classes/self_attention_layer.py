@@ -1,19 +1,23 @@
-class SelfAttentionLayer(layers.Layer):
-    def __init__(self, **kwargs):
-        super(SelfAttentionLayer, self).__init__(**kwargs)
+import tensorflow as tf
+from tensorflow.keras.layers import Dense
 
-    def build(self, input_shape):
-        self.W_q = self.add_weight(name='query_weight', shape=(input_shape[-1], input_shape[-1]), initializer='random_normal', trainable=True)
-        self.W_k = self.add_weight(name='key_weight', shape=(input_shape[-1], input_shape[-1]), initializer='random_normal', trainable=True)
-        self.W_v = self.add_weight(name='value_weight', shape=(input_shape[-1], input_shape[-1]), initializer='random_normal', trainable=True)
-        super(SelfAttentionLayer, self).build(input_shape)
+class SelfAttention(tf.keras.layers.Layer):
+    def __init__(self, units):
+        super(SelfAttention, self).__init__()
+        self.units = units
+        self.query_dense = Dense(units)
+        self.key_dense = Dense(units)
+        self.value_dense = Dense(units)
 
     def call(self, inputs):
-        Q = tf.keras.backend.dot(inputs, self.W_q)
-        K = tf.keras.backend.dot(inputs, self.W_k)
-        V = tf.keras.backend.dot(inputs, self.W_v)
+        query = self.query_dense(inputs)
+        key = self.key_dense(inputs)
+        value = self.value_dense(inputs)
 
-        attention_weights = tf.keras.backend.softmax(tf.keras.backend.batch_dot(Q, K, axes=[2, 2]) / tf.keras.backend.sqrt(tf.keras.backend.cast(tf.keras.backend.shape(K)[-1], tf.keras.backend.floatx())))
-        context = tf.keras.backend.batch_dot(attention_weights, V)
+        # Scaled dot-product attention
+        score = tf.matmul(query, key, transpose_b=True)
+        score = score / tf.math.sqrt(tf.cast(self.units, tf.float32))
+        weights = tf.nn.softmax(score, axis=-1)
 
-        return context
+        output = tf.matmul(weights, value)
+        return output, weights

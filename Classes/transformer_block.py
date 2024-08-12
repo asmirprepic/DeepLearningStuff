@@ -1,13 +1,14 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, LayerNormalization  # Import necessary Keras layers
 from tensorflow.keras import Sequential 
+from multihead_attention import MultiHeadAttention
 
 class TransformerBlock(tf.keras.layers.Layer):
     def __init__(self,units,num_heads,ff_dim):
         super(TransformerBlock,self).__init__()
         self.attention = MultiHeadAttention(num_heads,units)
         self.ffn = tf.keras.Sequential([
-            Dense(ff_dim,activation = 'relu')
+            Dense(ff_dim,activation = 'relu'),
             Dense(units)
         ])
 
