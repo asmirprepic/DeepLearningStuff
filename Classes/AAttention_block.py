@@ -1,5 +1,5 @@
 from tensorflow.keras.layers import Conv1D, Attention
-from tensorflow.keras.layers import layers
+from tensorflow.keras import layers
 
 class AAConvTransformerAgent:
     def aa_conv_block(self, inputs, filters, kernel_size, num_heads, head_size, dropout=0.1):
