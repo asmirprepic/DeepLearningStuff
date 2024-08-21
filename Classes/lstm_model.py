@@ -2,8 +2,8 @@
 import tensorflow as tf
 from tensorflow.keras import layers, models
 
-classLSTMModel(tf.keras.Model):
-    def__init__(self, units, num_outputs):
+class LSTMModel(tf.keras.Model):
+    def __init__(self, units, num_outputs):
         super(LSTMModel, self).__init__()
         # Define layers
         self.lstm1 = layers.LSTM(units, return_sequences=True)
@@ -11,7 +11,7 @@ classLSTMModel(tf.keras.Model):
         self.dense = layers.Dense(128, activation='relu')
         self.output_layer = layers.Dense(num_outputs)
 
-    defcall(self, inputs, training=False):
+    def call(self, inputs, training=False):
         x = self.lstm1(inputs)
         x = self.lstm2(x)
         x = self.dense(x)
