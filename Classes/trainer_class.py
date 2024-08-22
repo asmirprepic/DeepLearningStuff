@@ -15,6 +15,11 @@ class MyTrainer(Model):
     def metrics(self):
         # List metrics here.
         return [self.accuracy_metric]
+    
+    def reset_metrics(self):
+        # Reset the state of the metrics at the start of each epoch
+        for metric in self.metrics:
+            metric.reset_states()
 
     def train_step(self, data):
         x, y = data
