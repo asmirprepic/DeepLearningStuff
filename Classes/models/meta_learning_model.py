@@ -1,6 +1,7 @@
 
+import tensorflow as tf
 
-class MAMLTransformer():
+class MAMLTransformerModel():
     def maml_loss(self,model,X_train,Y_train,X_val,Y_val,inner_lr = 0.01):
         with tf.GradientTape() as tape: 
             predictions = model(X_train)
