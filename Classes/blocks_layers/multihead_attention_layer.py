@@ -2,7 +2,7 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, LayerNormalization  # Import necessary Keras layers
 from tensorflow.keras import Sequential 
-from self_attention_layer import SelfAttention
+from deep_learning.DeepLearningStuff.Classes.blocks_layers.self_attention_layer import SelfAttention
 
 class MultiHeadAttention(tf.kears.layers.Layer):
     def __init__(self,num_heads,units):

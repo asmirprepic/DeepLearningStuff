@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras import layers,models
-from self_attention_layer import SelfAttention
+from deep_learning.DeepLearningStuff.Classes.blocks_layers.self_attention_layer import SelfAttention
 
 class SelfAttionModel(tf.keras.Model):
     def __init__(self,num_classes,units):

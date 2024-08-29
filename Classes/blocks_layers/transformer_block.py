@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Dense, LayerNormalization  # Import necessary Keras layers
 from tensorflow.keras import Sequential 
-from multihead_attention import MultiHeadAttention
+from deep_learning.DeepLearningStuff.Classes.blocks_layers.multihead_attention_layer import MultiHeadAttention
 
 class TransformerBlock(tf.keras.layers.Layer):
     def __init__(self,units,num_heads,ff_dim):

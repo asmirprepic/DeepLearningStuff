@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensflow.keras.layers import Dense, Input,TimeDistrubuted
-from custom_gru_block import CustomGRU
+from deep_learning.DeepLearningStuff.Classes.blocks_layers.custom_gru_block import CustomGRU
 
 
 # Define the model class
