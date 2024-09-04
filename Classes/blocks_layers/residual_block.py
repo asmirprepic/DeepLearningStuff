@@ -1,3 +1,6 @@
+import tensorflow as tf
+from tensorflow.keras import layers
+
 class ResidualBlock(layers.Layer):
     def __init__(self, filters, kernel_size, **kwargs):
         super(ResidualBlock, self).__init__(**kwargs)
