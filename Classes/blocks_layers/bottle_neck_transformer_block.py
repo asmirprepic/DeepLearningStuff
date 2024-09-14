@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras.layers import Dense,LayerNormalization,Add
-
+from multihead_attention_layer import MultiHeadAttention
 
 class BottleNeckTransformerBlock(tf.keras.layers.Layer):
     def __init__(self,embed_dim,num_heads,bottleneck_dim):
