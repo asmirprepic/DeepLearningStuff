@@ -16,7 +16,7 @@ b2 = tf.Variable(1.)
 with tf.GradientTape(persistent=True) as tape:
     # Create a two-layer neural network
     y1 = x * w1 + b1
-    y2 = y1 * w2 + b2
+    y2 = y1 * w2 + b3
 
 # Solve partial derivatives
 dy2_dy1 = tape.gradient(y2, y1)
