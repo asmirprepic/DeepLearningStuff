@@ -4,7 +4,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 
-class VAE(nn.Module):'
+class VAE(nn.Module):
 
 
     def __init__(self, input_dim, hidden_dim, latent_dim):
