@@ -51,7 +51,7 @@ probability_model = keras.models.Sequential([
   model,
   keras.layers.Softmax()
 ])
-predictions = probability_model(x_text)
+predictions = probability_model(x_test)
 pred0 = predictions[0]
 
 # Get label of the prediction with the highest probability

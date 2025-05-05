@@ -29,7 +29,7 @@ def show():
     plt.yticks([])
     plt.grid(False)
     plt.imshow(train_images[i],cmap = plt.cm.binary)
-    plt.xlabel(class_names[train_labels[i][0])
+    plt.xlabel(class_names[train_labels[i][0]])
   plt.show()
 
 # Show images
